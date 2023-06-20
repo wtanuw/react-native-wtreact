@@ -1,5 +1,5 @@
 {
-    "name": "wtreact",
+    "name": "@react-native-wtreact",
     "private": true,
     "scripts": {
       "compile": "tsc -b -w -i",
