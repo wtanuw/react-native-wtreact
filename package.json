@@ -1,5 +1,5 @@
 {
-    "name": "react-native-wtreact",
+    "name": "wtanuw",
     "private": true,
     "scripts": {
       "compile": "tsc -b -w -i",

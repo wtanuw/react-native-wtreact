@@ -1,7 +1,7 @@
 {
-  "name": "@wtanuw/toast",
-  "version": "1.0.1",
-  "description": "",
+  "name": "wtcomponent",
+  "version": "1.0.0",
+  "description": "component for wtreact",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,14 +11,8 @@
     "url": "https://github.com/wtanuw/react-native-wtreact/tree/main/toast"
   },
   "keywords": [
-    "react-native"
+    "button"
   ],
-  "author": "",
-  "license": "",
-  "devDependencies": {
-    "react-native": "^0.70.0"
-  },
-  "peerDependencies": {
-    "react-native": "^0.70.0"
-  }
+  "author": "wat",
+  "license": "ISC"
 }
