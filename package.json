@@ -8,8 +8,6 @@
     },
     "devDependencies": {},
     "workspaces": [
-      "packages/*",
-      "toast",
-      "shared-preference"
+      "packages/*"
     ]
   }
