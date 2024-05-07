@@ -1,0 +1,24 @@
+{
+  "name": "react-native-native-toast-library",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wtanuw/react-native-wtreact/tree/main/react-native-native-toast-library"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "react-native": "^0.70.0"
+  },
+  "peerDependencies": {
+    "react-native": "^0.70.0"
+  }
+}

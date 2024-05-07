@@ -3,6 +3,10 @@ package in.sriraman.sharedpreferences;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
+import java.util.Set;
+
+import java.util.Map.Entry;
 
 public class SharedDataProvider {
 
@@ -59,11 +63,49 @@ public class SharedDataProvider {
         return results;
     }
 
-    public static String getSharedValue(String key) {
+    public static Map<String, Object> getAllMapSharedValues() {
+        Map<String, ?> keyValues = SharedHandler.getInstance().getAllSharedData();
+        List<String> keys = new ArrayList<>(keyValues.keySet());
+   		final Map<String, Object> constants = new HashMap<>();
+   		for (int i = 0; i < keyValues.size(); i++) {
+            String k = keys.get(i);
+            Object v = String.valueOf(keyValues.get(keys.get(i)));
+            constants.put(k, v);
+        }
+        
+        return constants;
+    }
+
+    public static Map<String, Object> getAllMap() {
+        Map<String, ?> keyValues = SharedHandler.getInstance().getAllSharedData();
+        List<String> keys = new ArrayList<>(keyValues.keySet());
+   		final Map<String, Object> constants = new HashMap<>();
+   		for (int i = 0; i < keyValues.size(); i++) {
+            String k = keys.get(i);
+            Object v = keyValues.get(keys.get(i));
+            constants.put(k, v);
+        }
+        
+        return constants;
+    }
+
+    public static Object getSharedValue(String key) {
+        Map<String, ?> keyloop = SharedHandler.getInstance().getAllSharedData();
+        Boolean have = keyloop.containsKey(key);
+        Object result = keyloop.get(key);
+        if (have && result instanceof Boolean) {
+                //handle boolean
+            return SharedHandler.getInstance().getBoolean(key);
+        } else if (have && result instanceof String) {
+                //handle String
+            return SharedHandler.getInstance().getString(key);
+        } else {
+
+        }
         return SharedHandler.getInstance().getString(key);
     }
 
-    public static void putSharedValue(String key, String value) {
+    public static void putSharedValue(String key, Object value) {
         SharedHandler.getInstance().putExtra(key, value);
     }
 

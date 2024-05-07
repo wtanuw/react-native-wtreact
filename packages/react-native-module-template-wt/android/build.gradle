@@ -14,20 +14,25 @@ buildscript {
     }
 }
 
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
 def safeExtGet(prop, fallback) {
     rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
 }
 
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+def DEFAULT_COMPILE_SDK_VERSION   = 31
+def DEFAULT_BUILD_TOOLS_VERSION   = "31.0.0"
+def DEFAULT_MIN_SDK_VERSION       = 21
+def DEFAULT_TARGET_SDK_VERSION    = 31
 
 android {
-    compileSdkVersion safeExtGet('compileSdkVersion', 31)
-    buildToolsVersion safeExtGet('buildToolsVersion', '31.0.0')
+    compileSdkVersion safeExtGet('compileSdkVersion', DEFAULT_COMPILE_SDK_VERSION)
+    buildToolsVersion safeExtGet('buildToolsVersion', DEFAULT_BUILD_TOOLS_VERSION)
 
     defaultConfig {
-        minSdkVersion safeExtGet('minSdkVersion', 21)
-        targetSdkVersion safeExtGet('targetSdkVersion', 31)
+        minSdkVersion safeExtGet('minSdkVersion', DEFAULT_MIN_SDK_VERSION)
+        targetSdkVersion safeExtGet('targetSdkVersion', DEFAULT_TARGET_SDK_VERSION)
     }
 }
 

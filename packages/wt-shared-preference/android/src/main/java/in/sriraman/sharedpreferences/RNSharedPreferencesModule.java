@@ -7,6 +7,7 @@ import com.facebook.react.bridge.*;
 
 import android.bluetooth.BluetoothAdapter;
 import com.facebook.react.bridge.Callback;
+import com.facebook.react.bridge.Promise;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
@@ -14,32 +15,15 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class RNSharedPreferencesModule extends ReactContextBaseJavaModule {
 
-
-	final int BT_ACTION_REQUEST_ENABLE = 1;
-
-	private BluetoothAdapter bt_adapter = null;
-	private ListView bt_list_view;
-	private ArrayList<BluetoothDevice> bt_device_list = null;
-	private boolean bt_scanning = false;
-	private boolean is_watch = false;
-	private String shared_name = "wit_player_shared_preferences";
-
-	private BroadcastReceiver bt_info_receiver = null;
-
-
-
+	private String default_shared_name = "wit_player_shared_preferences";
+	private String preference_shared_name = "shared_preferences";
+	private String shared_name = this.default_shared_name;
 
 	public void onCreate(Bundle savedInstanceState) {
-
-
-	}
-
-
-	private void initSharedHandler() {
-		SharedHandler.init(getReactApplicationContext(), shared_name);		
 	}
 
 	public RNSharedPreferencesModule(ReactApplicationContext reactContext) {
@@ -48,7 +32,35 @@ public class RNSharedPreferencesModule extends ReactContextBaseJavaModule {
 
 	@Override
 	public String getName() {
-		return "SharedPreferences";
+		return "RNWTReactPreference";
+	}
+	
+	public Map<String, Object> getConstants() {
+		setPreferenceName();
+		initSharedHandler();
+   		// final Map<String, Object> constants = new HashMap<>();
+   		final Map<String, Object> constants = SharedDataProvider.getAllMap();
+   		constants.put("DEFAULT_EVENT_NAME", "New Event");
+   		return constants;
+	}
+
+
+	private void initSharedHandler() {
+		if (shared_name == preference_shared_name) {
+			SharedHandler.init(getReactApplicationContext());
+		} else {
+			SharedHandler.init(getReactApplicationContext(), default_shared_name);		
+		}
+	}
+
+	@ReactMethod
+	public void setDefaultName() {
+		shared_name = default_shared_name;
+	}
+
+	@ReactMethod
+	public void setPreferenceName() {
+		shared_name = preference_shared_name;
 	}
 
 	@ReactMethod
@@ -56,6 +68,28 @@ public class RNSharedPreferencesModule extends ReactContextBaseJavaModule {
 		shared_name = name;
 	}
 
+	@ReactMethod
+		public void getSharedName(Promise promise){
+			try {
+				promise.resolve(shared_name);
+			} catch(Exception e) {
+				promise.reject("shared_name Error", e);
+			}
+		}
+
+	@ReactMethod
+		public void initHandler() {
+			initSharedHandler();
+		}
+
+
+	@ReactMethod
+		public void setItemString(String key, String value) {
+
+			initSharedHandler();
+			SharedDataProvider.putSharedValue(key,value);
+
+		}
 
 	@ReactMethod
 		public void setItem(String key, String value) {
@@ -66,14 +100,50 @@ public class RNSharedPreferencesModule extends ReactContextBaseJavaModule {
 		}
 
 	@ReactMethod
-		public void getItem(String key, Callback successCallback){
+		public void setString(String key, String value) {
 
 			initSharedHandler();
-			String value = SharedDataProvider.getSharedValue(key);
+			SharedDataProvider.putSharedValue(key,value);
+
+		}
+
+	@ReactMethod
+		public void setBoolean(String key, Boolean value) {
+
+			initSharedHandler();
+			SharedDataProvider.putSharedValue(key,value);
+
+		}
+
+	@ReactMethod
+		public void setDouble(String key, Double value) {
+
+			initSharedHandler();
+			SharedDataProvider.putSharedValue(key,value);
+
+		}
+
+	@ReactMethod
+		public void getItemCallback(String key, Callback successCallback){
+
+			initSharedHandler();
+			Object value = SharedDataProvider.getSharedValue(key);
 			successCallback.invoke(value);
 
 		}
 
+// @ReactMethod(isBlockingSynchronousMethod = true)
+	@ReactMethod
+		public void getItem(String key, Promise promise){
+
+			initSharedHandler();
+			Object value = SharedDataProvider.getSharedValue(key);
+			try {
+				promise.resolve(value);
+			} catch(Exception e) {
+				promise.reject("Create Event Error", e);
+			}
+		}
 
 	/***
 	 * getItems(): returns Native Array of Preferences for the given values

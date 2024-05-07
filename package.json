@@ -4,10 +4,14 @@
     "scripts": {
       "compile": "tsc -b -w -i",
       "eslint": "eslint src/**/**.{ts,tsx}",
-      "eslint:fix": "eslint src/**/**.{ts,tsx} --fix"
+      "eslint:fix": "eslint src/**/**.{ts,tsx} --fix",
+      "toast1": "npm install -g react-native-create-library",
+      "toast2": "react-native-create-library -—platforms ios,android NativeToastLibrary",
+      "react.dev1": "npx create-react-native-library@latest react-native-awesome-module",
+      "react.dev2": "create-react-native-module."
     },
     "devDependencies": {},
-    "workspaces": [
+    "x_xworkspaces": [
       "packages/*"
     ]
   }

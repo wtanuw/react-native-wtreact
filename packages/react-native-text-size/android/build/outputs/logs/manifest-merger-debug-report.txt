@@ -1,0 +1,17 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/macmini/Desktop/Wat/AttanePharma/AttanePharma/node_modules/react-native-text-size/android/src/main/AndroidManifest.xml:2:1-4:12
+INJECTED from /Users/macmini/Desktop/Wat/AttanePharma/AttanePharma/node_modules/react-native-text-size/android/src/main/AndroidManifest.xml:2:1-4:12
+	package
+		ADDED from /Users/macmini/Desktop/Wat/AttanePharma/AttanePharma/node_modules/react-native-text-size/android/src/main/AndroidManifest.xml:3:11-51
+		INJECTED from /Users/macmini/Desktop/Wat/AttanePharma/AttanePharma/node_modules/react-native-text-size/android/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/macmini/Desktop/Wat/AttanePharma/AttanePharma/node_modules/react-native-text-size/android/src/main/AndroidManifest.xml:2:11-69
+uses-sdk
+INJECTED from /Users/macmini/Desktop/Wat/AttanePharma/AttanePharma/node_modules/react-native-text-size/android/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/macmini/Desktop/Wat/AttanePharma/AttanePharma/node_modules/react-native-text-size/android/src/main/AndroidManifest.xml
+INJECTED from /Users/macmini/Desktop/Wat/AttanePharma/AttanePharma/node_modules/react-native-text-size/android/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/macmini/Desktop/Wat/AttanePharma/AttanePharma/node_modules/react-native-text-size/android/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/macmini/Desktop/Wat/AttanePharma/AttanePharma/node_modules/react-native-text-size/android/src/main/AndroidManifest.xml

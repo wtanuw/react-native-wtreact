@@ -1,9 +1,9 @@
 {
   "name": "@react-native-wtreact/preference",
-  "sourcename": "react-native-shared-preferences",
   "version": "1.0.2",
+  "sourcename": "react-native-shared-preferences",
   "description": "Android's Native key value storage system in React Native",
-  "main": "lib/index.js",
+  "main": "lib/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

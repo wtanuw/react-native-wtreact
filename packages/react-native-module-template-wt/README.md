@@ -140,3 +140,17 @@ By default, ESLint is configured separately for the library's source code and th
 ## License
 
 [MIT](LICENSE)
+
+
+
+npm install '../../wt/dfs/fsdf/sdfs/fs/df/sfsd'
+
+ios
+podspec file in root
+podspec file name same as s.name
+
+
+android
+
+
+javascript
